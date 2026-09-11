@@ -165,7 +165,7 @@ export default function FAQsSection({ faqs }: FAQsSectionProps) {
             Frequently Asked Questions
           </h2>
           <p className="text-sm text-neutral-400 leading-relaxed">
-            [FAQ section intro — point guests at the answers below.]
+            The things guests ask most often, answered properly. If yours is not here, the assistant above reads from our current site information.
           </p>
         </div>
 

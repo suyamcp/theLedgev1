@@ -15,29 +15,29 @@ export default function AboutSection({ data }: AboutSectionProps) {
   
   const elevation = data.elevation || '5,140 FT ASL';
   const climate = data.climate || '14°C — 19°C';
-  const latitude = data.latitude || '16.3792° N';
-  const longitude = data.longitude || '120.5755° E';
+  const latitude = data.latitude || '14.5878° N';
+  const longitude = data.longitude || '121.1759° E';
 
   const highlights = [
     {
       icon: <Cloud className="w-5 h-5 text-gold-400" />,
-      title: data.title ? '[Highlight 1]' : 'Dynamic highlight 1',
-      description: data.title ? 'Wake up at 5,000 ft altitude to a heavy, majestic blanket of white ocean mist rolling across the valleys.' : 'Configure custom highlight title & details in the Admin dashboard.'
+      title: data.title ? 'The Morning Clear' : 'Dynamic highlight 1',
+      description: data.title ? 'Most mornings open with fog sitting in the valley, which burns off somewhere around eight. It is the reason breakfast runs late here.' : 'Configure custom highlight title & details in the Admin dashboard.'
     },
     {
       icon: <Wind className="w-5 h-5 text-gold-400" />,
-      title: data.title ? '[Highlight 2]' : 'Dynamic highlight 2',
-      description: data.title ? '[Describe this highlight.]' : 'Configure custom highlight title & details in the Admin dashboard.'
+      title: data.title ? 'Genuinely Quiet' : 'Dynamic highlight 2',
+      description: data.title ? 'Quiet hours from 10 PM to 7 AM, and we enforce them. No function rooms, no events, no music in the corridors.' : 'Configure custom highlight title & details in the Admin dashboard.'
     },
     {
       icon: <Compass className="w-5 h-5 text-gold-400" />,
-      title: data.title ? 'Pristine Ridges' : 'Dynamic highlight 3',
-      description: data.title ? '[Describe this highlight.]' : 'Configure custom highlight title & details in the Admin dashboard.'
+      title: data.title ? 'Every Room Outward' : 'Dynamic highlight 3',
+      description: data.title ? 'There are no interior-facing rooms. Every one of the thirty-six looks down the valley, from the studios to the suite.' : 'Configure custom highlight title & details in the Admin dashboard.'
     },
     {
       icon: <Sunrise className="w-5 h-5 text-gold-400" />,
-      title: data.title ? '[Highlight 4]' : 'Dynamic highlight 4',
-      description: data.title ? '[Describe this highlight.]' : 'Configure custom highlight title & details in the Admin dashboard.'
+      title: data.title ? 'The Terrace' : 'Dynamic highlight 4',
+      description: data.title ? 'A long stone deck cut into the ridge, open sunrise to 10 PM, with table service from the café all day.' : 'Configure custom highlight title & details in the Admin dashboard.'
     }
   ];
 
@@ -94,11 +94,11 @@ export default function AboutSection({ data }: AboutSectionProps) {
                   LOCATION
                 </span>
                 <div>
-                  <h3 className="font-display font-medium text-xs text-neutral-400 uppercase">LOCATION GEO-SLOT</h3>
+                  <h3 className="font-display font-medium text-xs text-neutral-400 uppercase">COORDINATES</h3>
                   <p className="font-mono font-bold text-base text-cream-100">{latitude}, {longitude}</p>
                 </div>
                 <div className="flex justify-between items-center bg-pine-900/60 p-3.5 rounded-xl border border-pine-850">
-                  <span className="text-xs text-neutral-300">Elevation Height</span>
+                  <span className="text-xs text-neutral-300">Elevation</span>
                   <span className="font-display font-extrabold text-xs text-gold-300">{elevation}</span>
                 </div>
                 <div className="flex justify-between items-center bg-pine-900/60 p-3.5 rounded-xl border border-pine-850">

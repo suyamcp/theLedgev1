@@ -21,9 +21,9 @@
   --color-paper-50: #fcfcf9;
   --color-paper-100: #faf9f2;
   --color-paper-200: #f1efe6;
-  --color-ink: #0a1710;
-  --color-ink-700: #33413a;
-  --color-ink-500: #5f6b64;
+  --color-ink: #14171a;
+  --color-ink-700: #3a4046;
+  --color-ink-500: #666d75;
 }
 
 @theme inline {
@@ -64,101 +64,102 @@
   --color-neutral-900: var(--vp-neutral-900);
 }
 
-/* ---------- DARK (default) ---------- */
-:root {
-  color-scheme: dark;
-
-  --vp-pine-950: #020f07;   /* page background */
-  --vp-pine-900: #051a0e;   /* cards / panels  */
-  --vp-pine-850: #082414;   /* raised / borders */
-  --vp-pine-800: #062c15;   /* borders */
-  --vp-pine-750: #0a3a1d;
-  --vp-pine-700: #0e4424;
-  --vp-pine-600: #165b32;
-  --vp-pine-500: #1e7a44;
-  --vp-pine-400: #29a35c;
-  --vp-pine-300: #49c47e;
-  --vp-pine-200: #88e0ae;
-  --vp-pine-100: #c3f3d7;
-
-  --vp-gold-600: #a87e2a;
-  --vp-gold-500: #c9a054;
-  --vp-gold-400: #e0bb73;
-  --vp-gold-300: #ebd29b;
-  --vp-gold-200: #f5e7c4;
-
-  --vp-cream-50: #fcfcf9;   /* body text */
-  --vp-cream-100: #faf9f2;  /* headings */
-  --vp-cream-200: #f4f2e3;
-  --vp-cream-300: #ebe8cd;
-  --vp-cream-400: #ded9b1;
-
-  --vp-neutral-100: #f5f5f5;
-  --vp-neutral-200: #e5e5e5;
-  --vp-neutral-300: #d4d4d4;
-  --vp-neutral-400: #a3a3a3;  /* muted body copy */
-  --vp-neutral-500: #737373;
-  --vp-neutral-600: #525252;
-  --vp-neutral-700: #404040;
-  --vp-neutral-800: #262626;
-  --vp-neutral-850: #1c1c1c;
-  --vp-neutral-900: #171717;
-}
-
-/* ---------- LIGHT ----------
-   Not a mechanical inversion. The page is pure white; type is a deep forest
-   near-black (warmer and more expensive-looking than pure #000); secondary
-   copy steps down through warm greens rather than flat grey. Brand gold is
-   KEPT at full strength for button fills and borders, while the lighter golds
-   -- which exist to be readable text on dark -- become deep bronze so they
-   stay legible on white.
+/* ---------- LIGHT (default) ----------
+   The brand surface is a soft light grey, not white: the page sits at
+   --pine-950 and panels step UP to near-white so cards lift off the page
+   instead of dissolving into it. Type is a neutral near-black; the accent is
+   a muted brass that stays warm against all that grey without shouting.
    ------------------------------------------------------------------------ */
+:root,
 [data-theme="light"] {
   color-scheme: light;
 
-  /* Surfaces: only the page is pure white. Panels carry the faintest warm
-     tint and borders stay clearly drawn so nothing dissolves. */
-  --vp-pine-950: #ffffff;   /* page */
-  --vp-pine-900: #f7faf6;   /* cards / panels */
-  --vp-pine-850: #ccd5c5;   /* card edges */
-  --vp-pine-800: #b8c4af;   /* main borders */
-  --vp-pine-750: #a6b39d;
-  --vp-pine-700: #94a38b;
+  /* Surfaces: page is light grey, panels are near-white, borders stay drawn. */
+  --vp-pine-950: #eceef0;   /* page */
+  --vp-pine-900: #f8f9fa;   /* cards / panels */
+  --vp-pine-850: #dcdfe3;   /* card edges */
+  --vp-pine-800: #c8ccd2;   /* main borders */
+  --vp-pine-750: #b2b7bf;
+  --vp-pine-700: #9aa1aa;
 
-  /* Saturated greens stay green, deepened to read on white. */
-  --vp-pine-600: #1c6b3b;
-  --vp-pine-500: #1a7040;
-  --vp-pine-400: #1c8049;
-  --vp-pine-300: #228f57;
-  --vp-pine-200: #7fce9f;
-  --vp-pine-100: #d6f0e0;
+  /* Mid greys used as solid accents; deepened to read on a light page. */
+  --vp-pine-600: #4b5560;
+  --vp-pine-500: #55606c;
+  --vp-pine-400: #626e7b;
+  --vp-pine-300: #77828f;
+  --vp-pine-200: #c2c9d1;
+  --vp-pine-100: #e2e7ec;
 
-  /* Gold: 500 is the brand fill (buttons, borders) and must stay bright.
-     400/300/200 are text-on-dark tokens, so they invert to deep bronze. */
-  --vp-gold-600: #6b4e14;
-  --vp-gold-500: #c9a054;
-  --vp-gold-400: #7d5a15;
-  --vp-gold-300: #6b4d10;
-  --vp-gold-200: #5a4009;
+  /* Brass: 500 is the brand fill (buttons, borders) and stays mid-weight.
+     400/300/200 are text-on-dark tokens, so they deepen to stay legible. */
+  --vp-gold-600: #6b5630;
+  --vp-gold-500: #a98d5f;
+  --vp-gold-400: #7a6339;
+  --vp-gold-300: #6a5631;
+  --vp-gold-200: #5b4a29;
 
-  /* Type: deep forest black for headings, stepping down to soft green-grey. */
-  --vp-cream-100: #0c1d14;  /* headings */
-  --vp-cream-50:  #1e2f27;  /* body */
-  --vp-cream-200: #35463d;
-  --vp-cream-300: #4b5c53;
-  --vp-cream-400: #61726a;
+  /* Type: neutral near-black for headings, stepping down to soft grey. */
+  --vp-cream-100: #15181c;  /* headings */
+  --vp-cream-50:  #262b31;  /* body */
+  --vp-cream-200: #383e46;
+  --vp-cream-300: #4c535c;
+  --vp-cream-400: #616872;
 
-  /* Secondary copy. 400 is the workhorse muted tone (~6.4:1 on white). */
-  --vp-neutral-100: #0a1610;
-  --vp-neutral-200: #18261f;
-  --vp-neutral-300: #2c3d34;
-  --vp-neutral-400: #54655c;
-  --vp-neutral-500: #68786e;
-  --vp-neutral-600: #7e8d84;
-  --vp-neutral-700: #c4cec0;
-  --vp-neutral-800: #a3b09c;
-  --vp-neutral-850: #97a690;
-  --vp-neutral-900: #7d8c84;
+  /* Secondary copy. 400 is the workhorse muted tone on the grey page. */
+  --vp-neutral-100: #101317;
+  --vp-neutral-200: #1d2126;
+  --vp-neutral-300: #303640;
+  --vp-neutral-400: #59616c;
+  --vp-neutral-500: #6b7380;
+  --vp-neutral-600: #808896;
+  --vp-neutral-700: #ccd2d9;
+  --vp-neutral-800: #aeb5bf;
+  --vp-neutral-850: #a1a9b4;
+  --vp-neutral-900: #8b939f;
+}
+
+/* ---------- DARK (secondary) ----------
+   A neutral charcoal, not a tinted one: the brand is grey, so the dark theme
+   is the same grey ramp pulled down rather than a different hue.
+   ------------------------------------------------------------------------ */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --vp-pine-950: #131517;   /* page background */
+  --vp-pine-900: #1b1e21;   /* cards / panels  */
+  --vp-pine-850: #24282c;   /* raised / borders */
+  --vp-pine-800: #2d3237;   /* borders */
+  --vp-pine-750: #383e44;
+  --vp-pine-700: #454c53;
+  --vp-pine-600: #5a626b;
+  --vp-pine-500: #6f7882;
+  --vp-pine-400: #8b939d;
+  --vp-pine-300: #a8afb8;
+  --vp-pine-200: #c9ced4;
+  --vp-pine-100: #e6e9ec;
+
+  --vp-gold-600: #8a7145;
+  --vp-gold-500: #b89c68;
+  --vp-gold-400: #d0b688;
+  --vp-gold-300: #e0cba7;
+  --vp-gold-200: #efe1c8;
+
+  --vp-cream-50: #f7f8f9;   /* body text */
+  --vp-cream-100: #ffffff;  /* headings */
+  --vp-cream-200: #eef0f2;
+  --vp-cream-300: #dfe2e6;
+  --vp-cream-400: #cbcfd5;
+
+  --vp-neutral-100: #f4f5f6;
+  --vp-neutral-200: #e4e6e8;
+  --vp-neutral-300: #d2d5d9;
+  --vp-neutral-400: #a2a8b0;  /* muted body copy */
+  --vp-neutral-500: #767d85;
+  --vp-neutral-600: #545b63;
+  --vp-neutral-700: #41474d;
+  --vp-neutral-800: #272b2f;
+  --vp-neutral-850: #1d2023;
+  --vp-neutral-900: #17191c;
 }
 
 body { background-color: var(--vp-pine-950); }
@@ -181,20 +182,20 @@ body { background-color: var(--vp-pine-950); }
 
 /* Dark-mode shadows are heavy black glows; on white they read as smudges.
    Light mode gets soft, layered, slightly green-tinted elevation instead. */
-[data-theme="light"] .shadow-2xl {
-  box-shadow: 0 1px 2px rgba(20, 42, 30, 0.04), 0 12px 32px -8px rgba(20, 42, 30, 0.12);
+:root:not([data-theme="dark"]) .shadow-2xl {
+  box-shadow: 0 1px 2px rgba(22, 26, 32, 0.04), 0 12px 32px -8px rgba(22, 26, 32, 0.14);
 }
-[data-theme="light"] .shadow-xl {
-  box-shadow: 0 1px 2px rgba(20, 42, 30, 0.04), 0 8px 22px -6px rgba(20, 42, 30, 0.10);
+:root:not([data-theme="dark"]) .shadow-xl {
+  box-shadow: 0 1px 2px rgba(22, 26, 32, 0.04), 0 8px 22px -6px rgba(22, 26, 32, 0.12);
 }
-[data-theme="light"] .shadow-lg {
-  box-shadow: 0 1px 2px rgba(20, 42, 30, 0.04), 0 5px 14px -4px rgba(20, 42, 30, 0.08);
+:root:not([data-theme="dark"]) .shadow-lg {
+  box-shadow: 0 1px 2px rgba(22, 26, 32, 0.04), 0 5px 14px -4px rgba(22, 26, 32, 0.10);
 }
-[data-theme="light"] .shadow-md { box-shadow: 0 2px 8px -2px rgba(20, 42, 30, 0.08); }
-[data-theme="light"] .shadow-inner { box-shadow: inset 0 1px 3px rgba(20, 42, 30, 0.05); }
+:root:not([data-theme="dark"]) .shadow-md { box-shadow: 0 2px 8px -2px rgba(22, 26, 32, 0.10); }
+:root:not([data-theme="dark"]) .shadow-inner { box-shadow: inset 0 1px 3px rgba(22, 26, 32, 0.06); }
 
 /* Text selection should feel branded, not the browser default blue. */
-[data-theme="light"] ::selection { background: #f0e2c2; color: #0c1d14; }
+:root:not([data-theme="dark"]) ::selection { background: #d8dde3; color: #15181c; }
 
 /* Ease the flip between themes rather than snapping. */
 html { transition: background-color 220ms ease; }
@@ -202,8 +203,8 @@ body { transition: background-color 220ms ease, color 220ms ease; }
 
 
 /* Accent text that is near-white by design (calendar day numbers, status chips)
-   would vanish on a white page, so darken those specific Tailwind tokens. */
-[data-theme="light"] {
+   would vanish on a light page, so darken those specific Tailwind tokens. */
+:root:not([data-theme="dark"]) {
   --color-emerald-50:  #0f4c34;
   --color-emerald-100: #115939;
   --color-emerald-200: #136844;
@@ -217,15 +218,15 @@ body { transition: background-color 220ms ease, color 220ms ease; }
 }
 
 /* The dark-mode "fog" that fades photos into the page reads as haze on white. */
-[data-theme="light"] .img-fade { display: none; }
+:root:not([data-theme="dark"]) .img-fade { display: none; }
 
 /* Glow effects and animation classes */
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 5px rgba(201, 160, 84, 0.4), 0 0 10px rgba(201, 160, 84, 0.2);
+    box-shadow: 0 0 5px rgba(169, 141, 95, 0.35), 0 0 10px rgba(169, 141, 95, 0.18);
   }
   50% {
-    box-shadow: 0 0 15px rgba(201, 160, 84, 0.8), 0 0 25px rgba(201, 160, 84, 0.4);
+    box-shadow: 0 0 15px rgba(169, 141, 95, 0.7), 0 0 25px rgba(169, 141, 95, 0.35);
   }
 }
 

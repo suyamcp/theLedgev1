@@ -38,20 +38,20 @@ export default function Navigation({ onBookNowClick, activeSection, onAdminClick
               <div className="w-12 h-12 rounded-full bg-paper-50 border-2 border-gold-500 overflow-hidden flex items-center justify-center p-1 relative shadow-inner">
                 {/* Custom circular mountain logo vector in CSS/SVG */}
                 <svg className="w-full h-full text-ink" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="50" cy="50" r="42" fill="#faf9f2" stroke="#062c15" strokeWidth="4"/>
+                  <circle cx="50" cy="50" r="42" fill="#f7f8f9" stroke="#2d3237" strokeWidth="4"/>
                   {/* Pines */}
                   <path d="M22 68 L28 54 L34 68 Z" fill="#0c4220" stroke="none"/>
                   <path d="M66 68 L72 54 L78 68 Z" fill="#0c4220" stroke="none"/>
                   {/* Mountains */}
-                  <path d="M26 73 L50 35 L74 73 Z" fill="none" stroke="#062c15" strokeWidth="7"/>
-                  <path d="M40 73 L54 50 L68 73 Z" fill="none" stroke="#062c15" strokeWidth="5"/>
+                  <path d="M26 73 L50 35 L74 73 Z" fill="none" stroke="#2d3237" strokeWidth="7"/>
+                  <path d="M40 73 L54 50 L68 73 Z" fill="none" stroke="#2d3237" strokeWidth="5"/>
                   {/* Sun */}
-                  <circle cx="50" cy="27" r="6" fill="#c9a054" stroke="none" />
+                  <circle cx="50" cy="27" r="6" fill="#a98d5f" stroke="none" />
                 </svg>
               </div>
               <div className="flex flex-col text-left">
                 <span className="font-display font-black text-cream-100 text-sm tracking-widest leading-none">THE LEDGE</span>
-                <span className="font-display font-bold text-[9px] text-gold-400 tracking-wider">[TAGLINE]</span>
+                <span className="font-display font-bold text-[9px] text-gold-400 tracking-wider">ANTIPOLO</span>
               </div>
             </a>
           </div>
@@ -77,7 +77,7 @@ export default function Navigation({ onBookNowClick, activeSection, onAdminClick
           {/* Right Address & Book Shortcut */}
           <div className="hidden lg:flex items-center gap-6" id="desktop_right_header_data">
             <span className="text-[10px] uppercase font-bold tracking-widest text-gold-300/80 font-display flex items-center gap-1.5">
-              <MapPin className="w-4 h-4 text-gold-500 animate-bounce" /> [Your address]
+              <MapPin className="w-4 h-4 text-gold-500 animate-bounce" /> Ridgeview Drive, Antipolo
             </span>
             <ThemeToggle />
             {onAdminClick && (
@@ -94,7 +94,7 @@ export default function Navigation({ onBookNowClick, activeSection, onAdminClick
               className="py-2.5 px-5 rounded-full bg-gold-500 hover:bg-gold-400 text-ink font-display font-semibold text-xs tracking-wider transition-all hover:scale-105 active:scale-95 shadow-lg shadow-gold-500/10 cursor-pointer"
               id="header_quick_book_btn"
             >
-              Secure Spot
+              Book Now
             </button>
           </div>
 
@@ -127,7 +127,7 @@ export default function Navigation({ onBookNowClick, activeSection, onAdminClick
           ))}
           <div className="pt-4 border-t border-pine-900/60 space-y-4">
             <div className="flex items-center gap-2 pl-3 text-[10px] font-display uppercase tracking-wider text-neutral-400 text-left">
-              <MapPin className="w-4 h-4 text-gold-500" /> [Your address]
+              <MapPin className="w-4 h-4 text-gold-500" /> Ridgeview Drive, Antipolo, Rizal
             </div>
             <ThemeToggle variant="full" />
             {onAdminClick && (

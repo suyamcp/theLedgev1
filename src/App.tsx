@@ -232,7 +232,7 @@ export default function App() {
                 <img 
                   src={cmsData.hero.backgroundImage} 
                   alt="The Ledge Atmospheric Backdrop" 
-                  className="w-full h-full object-cover brightness-[0.35]"
+                  className="w-full h-full object-cover brightness-[0.8]"
                   referrerPolicy="no-referrer"
                 />
               ) : (
@@ -246,18 +246,18 @@ export default function App() {
                 </div>
               )}
               {/* Foggy / Vignette overlay */}
-              <div className="img-fade absolute inset-0 bg-gradient-to-b from-pine-950/60 via-transparent to-pine-950" />
-              <div className="img-fade absolute inset-r-0 h-1/4 bg-gradient-to-t from-transparent to-pine-950/90" />
+              <div className="absolute inset-0 bg-black/45" />
+              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-pine-950 to-transparent" />
             </div>
 
             {/* Floating geographical coordinates */}
             <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex justify-between sm:justify-end z-10" id="hero_upper_credits">
               <div className="text-left sm:text-right">
-                <span className="text-[10px] uppercase font-black tracking-widest text-[#e0bb73]/90 block font-display">
-                  [EST. YEAR — LOCATION]
+                <span className="text-[10px] uppercase font-black tracking-widest text-[#d0b688]/90 block font-display">
+                  EST. 2018 — ANTIPOLO, RIZAL
                 </span>
                 <span className="text-[8px] tracking-[0.15em] text-paper-50/60 block font-mono mt-0.5">
-                  16.3792° N, 120.5755° E
+                  {[cmsData.about.latitude, cmsData.about.longitude].filter(Boolean).join(', ')}
                 </span>
               </div>
             </div>
@@ -267,7 +267,7 @@ export default function App() {
               
               <div className="space-y-4">
                 {/* Elegant subheader tagline */}
-                <span className="text-xs uppercase font-extrabold tracking-[0.3em] text-gold-500 block font-display bg-gold-500/5 py-1.5 px-4 rounded-full border border-gold-500/10 backdrop-blur w-fit mx-auto">
+                <span className="text-xs uppercase font-extrabold tracking-[0.3em] text-[#d9c096] block font-display bg-white/5 py-1.5 px-4 rounded-full border border-white/15 backdrop-blur w-fit mx-auto">
                   {cmsData.hero.tagline || "[BRAND TAGLINE PLACEHOLDER]"}
                 </span>
                 
@@ -283,7 +283,7 @@ export default function App() {
               {/* PULSING PILL BOOK NOW BUTTON */}
               <button
                 onClick={handleScrollToBooking}
-                className="neon-btn-glow py-4 px-10 rounded-full bg-black/85 backdrop-blur-sm border-2 border-[#2f7d4e] hover:border-gold-500 hover:bg-gold-500 text-paper-50 hover:text-ink font-display font-extrabold text-sm tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-2xl relative group cursor-pointer"
+                className="neon-btn-glow py-4 px-10 rounded-full bg-black/85 backdrop-blur-sm border-2 border-[#a98d5f] hover:border-gold-500 hover:bg-gold-500 text-paper-50 hover:text-ink font-display font-extrabold text-sm tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-2xl relative group cursor-pointer"
                 id="hero_pill_book_now_btn"
               >
                 <span className="relative z-10 flex items-center gap-3">
@@ -293,7 +293,7 @@ export default function App() {
             </div>
 
             {/* Ambient indicator bar at footer */}
-            <div className="z-10 pb-8 flex flex-col items-center gap-1.5 cursor-pointer animate-bounce text-paper-50/70 hover:text-[#e0bb73]" onClick={handleScrollToBooking} id="arrow_indicator">
+            <div className="z-10 pb-8 flex flex-col items-center gap-1.5 cursor-pointer animate-bounce text-paper-50/70 hover:text-[#d0b688]" onClick={handleScrollToBooking} id="arrow_indicator">
               <span className="text-[9px] uppercase font-bold tracking-widest font-display">Discover Experience</span>
               <ArrowDown className="w-4 h-4" />
             </div>
@@ -305,13 +305,13 @@ export default function App() {
               
               <div className="text-left max-w-3xl mb-16 space-y-4">
                 <span className="text-xs uppercase font-extrabold tracking-widest text-gold-400 font-display block">
-                  ACCOMMODATION SCHEMES
+                  THE ROOMS
                 </span>
                 <h2 className="font-serif font-black text-3xl sm:text-4xl text-cream-100 leading-tight">
-                  Rates & Options
+                  Rooms & Rates
                 </h2>
                 <p className="text-sm text-neutral-400 leading-relaxed max-w-2xl">
-                  [RATES SECTION INTRO — one or two lines describing the range of stays you offer.]
+                  Thirty-six rooms across three floors, all of them facing the valley. Rates are per night and include Wi-Fi, terrace access, and morning coffee.
                 </p>
               </div>
 
@@ -358,10 +358,10 @@ export default function App() {
                             </h3>
                             <div className="flex items-center gap-3 text-[10px] text-neutral-400">
                               <span className="flex items-center gap-1">
-                                <Users className="w-3.5 h-3.5 text-gold-500" /> Max {room.capacity || '--'} Pax
+                                <Users className="w-3.5 h-3.5 text-gold-500" /> Sleeps {room.capacity || '--'}
                               </span>
                               <span className="w-1.5 h-1.5 rounded-full bg-neutral-700" />
-                              <span>{room.quantity || '0'} plots available</span>
+                              <span>{room.quantity || '0'} rooms available</span>
                             </div>
                           </div>
 
@@ -427,13 +427,13 @@ export default function App() {
               
               <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
                 <span className="text-xs uppercase font-extrabold tracking-widest text-gold-400 font-display flex items-center justify-center gap-2">
-                  <CalendarDays className="w-4 h-4 animate-pulse" /> CAMP SLOTS GUARANTEE
+                  <CalendarDays className="w-4 h-4 animate-pulse" /> REAL-TIME AVAILABILITY
                 </span>
                 <h2 className="font-serif font-black text-3xl sm:text-4xl text-cream-100">
                   Live Availability Calendar
                 </h2>
                 <p className="text-sm text-neutral-400 leading-relaxed">
-                  [BOOKING SECTION INTRO.] Our booking engine locks dates instantly upon ticket generation.
+                  Pick your dates below to see what is actually free. Your room is held the moment you book, and confirmed once we verify payment.
                 </p>
               </div>
 
@@ -462,15 +462,15 @@ export default function App() {
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-full bg-paper-50 border border-gold-500 overflow-hidden flex items-center justify-center p-0.5">
                       <svg className="w-full h-full text-ink" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="45" fill="#faf9f2" />
-                        <path d="M30 75 L50 40 L70 75 Z" fill="#062c15" />
-                        <circle cx="50" cy="30" r="5" fill="#c9a054" />
+                        <circle cx="50" cy="50" r="45" fill="#f7f8f9" />
+                        <path d="M30 75 L50 40 L70 75 Z" fill="#2d3237" />
+                        <circle cx="50" cy="30" r="5" fill="#a98d5f" />
                       </svg>
                     </div>
                     <span className="font-display font-extrabold text-cream-100 text-xs tracking-wider uppercase">THE LEDGE</span>
                   </div>
                   <p className="text-[11px] text-neutral-500 leading-relaxed">
-                    [FOOTER BLURB — one or two lines describing The Ledge.]
+                    A thirty-six room hotel on the ridge above the valley. Quiet floors, good coffee, and a terrace worth the drive.
                   </p>
                 </div>
 
@@ -478,9 +478,9 @@ export default function App() {
                 <div className="space-y-3">
                   <h4 className="font-display font-bold text-xs text-cream-100 uppercase tracking-wider">Contact</h4>
                   <ul className="space-y-2 text-[11px]">
-                    <li>Phone: [Your phone number]</li>
+                    <li>Phone: +63 2 8555 0100</li>
                     <li>Email: reservations@theledge.example</li>
-                    <li>Location: [Your address]</li>
+                    <li>Location: Ridgeview Drive, Antipolo, Rizal</li>
                   </ul>
                 </div>
 
@@ -499,9 +499,9 @@ export default function App() {
                 <div className="space-y-3">
                   <h4 className="font-display font-bold text-xs text-cream-100 uppercase tracking-wider font-display">Operational Hours</h4>
                   <ul className="space-y-1.5 text-[11px] text-neutral-500">
-                    <li><span className="text-neutral-300 font-semibold">Reception:</span> [Hours]</li>
-                    <li><span className="text-neutral-300 font-semibold">[Facility]:</span> [Hours]</li>
-                    <li><span className="text-neutral-300 font-semibold">[Facility]:</span> [Hours]</li>
+                    <li><span className="text-neutral-300 font-semibold">Reception:</span> 24 hours</li>
+                    <li><span className="text-neutral-300 font-semibold">Grayline Café:</span> 6:00 AM — 11:00 PM</li>
+                    <li><span className="text-neutral-300 font-semibold">The Terrace:</span> Sunrise — 10:00 PM</li>
                   </ul>
                 </div>
 
@@ -512,7 +512,7 @@ export default function App() {
                 <div className="flex flex-wrap items-center gap-4">
                   <a href="#faqs" className="hover:text-neutral-400 uppercase">Privacy Policy</a>
                   <span>•</span>
-                  <a href="#faqs" className="hover:text-neutral-400 uppercase">Term of Service</a>
+                  <a href="#faqs" className="hover:text-neutral-400 uppercase">Terms of Service</a>
                   <span>•</span>
                   <button
                     onClick={() => window.dispatchEvent(new Event('open-cookie-settings'))}

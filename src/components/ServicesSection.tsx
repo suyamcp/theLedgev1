@@ -1,5 +1,5 @@
 import React from 'react';
-import { Coffee, ShieldCheck, Gamepad2, Sparkles, Check, Image as ImageIcon } from 'lucide-react';
+import { Coffee, Sun, Sparkles, ShieldCheck, Check, Image as ImageIcon } from 'lucide-react';
 import { Service } from '../types';
 
 interface ServicesSectionProps {
@@ -10,9 +10,9 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
   const getIcon = (idx: number) => {
     switch (idx % 4) {
       case 0: return <Coffee className="w-5 h-5 text-gold-500" />;
-      case 1: return <Gamepad2 className="w-5 h-5 text-gold-500" />;
-      case 2: return <ShieldCheck className="w-5 h-5 text-gold-500" />;
-      default: return <Sparkles className="w-5 h-5 text-gold-500" />;
+      case 1: return <Sun className="w-5 h-5 text-gold-500" />;
+      case 2: return <Sparkles className="w-5 h-5 text-gold-500" />;
+      default: return <ShieldCheck className="w-5 h-5 text-gold-500" />;
     }
   };
 
@@ -26,10 +26,10 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
             WHAT WE OFFER
           </span>
           <h2 className="font-serif font-bold text-3xl sm:text-4xl text-cream-100">
-            The Ledge Hospitality Services
+            Everything Else We Do
           </h2>
           <p className="text-sm text-neutral-400 leading-relaxed">
-            We provide specialized creature comforts that allow campers to enjoy raw mountain scenery without compromising on convenience. Warm up, unwind, stay secure, and share the journey.
+            Three things we put real effort into: feeding you well, giving you somewhere extraordinary to sit, and leaving you alone when that is what you came for.
           </p>
         </div>
 

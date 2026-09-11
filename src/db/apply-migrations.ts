@@ -171,8 +171,10 @@ async function run() {
     await db.execute(sql`
       INSERT INTO "add_ons" ("name", "description", "price")
       VALUES 
-        ('[Add-on 1]', '[Describe this optional extra.]', 0.00),
-        ('[Add-on 2]', '[Describe this optional extra.]', 0.00)
+        ('Airport Transfer (one way)', 'Private car from NAIA or Clark, meeting you at arrivals', 1200.00),
+        ('Breakfast for Two', 'Full breakfast in Grayline Cafe, 6:00 to 11:00 AM', 650.00),
+        ('Guaranteed Late Checkout', 'Keep your room until 3:00 PM, confirmed at booking', 900.00),
+        ('Private Terrace Dinner', 'Reserved table on the terrace, three-course seasonal menu at sunset', 2500.00)
       ON CONFLICT ("name") DO NOTHING;
     `);
 

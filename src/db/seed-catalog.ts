@@ -9,9 +9,9 @@ async function seedCatalog() {
   }
 
   const catalog = [
-    { slug: 'unit-premium',  name: 'Premium Unit',  baseRate: '0', capacity: 2, count: 1, prefix: 'PU' },
-    { slug: 'unit-standard', name: 'Standard Unit', baseRate: '0', capacity: 4, count: 1, prefix: 'SU' },
-    { slug: 'unit-basic',    name: 'Basic Unit',    baseRate: '0', capacity: 2, count: 1, prefix: 'BU' },
+    { slug: 'unit-premium',  name: 'The Ledge Suite', baseRate: '8500', capacity: 2, count: 6,  prefix: 'LS' },
+    { slug: 'unit-standard', name: 'Deluxe King',     baseRate: '5200', capacity: 3, count: 12, prefix: 'DK' },
+    { slug: 'unit-basic',    name: 'Studio Queen',    baseRate: '3400', capacity: 2, count: 18, prefix: 'SQ' },
   ];
 
   for (const item of catalog) {

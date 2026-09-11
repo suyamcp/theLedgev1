@@ -51,7 +51,7 @@ async function reconcileRoomInventory(slug: string, desired: number) {
   const current = existing.length;
   if (target === current) return { slug, ok: true, current, target, added: 0, removed: 0 };
 
-  // Prefix from the existing units (PU-, SU-, BU-), else initials of the slug.
+  // Prefix from the existing units (LS-, DK-, SQ-), else initials of the slug.
   const prefix = existing[0]?.roomNumber?.includes('-')
     ? existing[0].roomNumber.split('-')[0]
     : slug.split('-').map(w => w[0]).join('').toUpperCase();
@@ -92,14 +92,15 @@ async function reconcileRoomInventory(slug: string, desired: number) {
 // ==========================================
 
 // Seeded into the database on first run, then edited from the Admin Panel.
-// Fill in real account details before taking live bookings — accounts left blank
-// are filtered out of the guest email and the reservation ticket.
+// The account numbers below are DEMO PLACEHOLDERS — replace them with real ones
+// before taking live bookings. Accounts left blank are filtered out of the
+// guest email and the reservation ticket.
 const DEFAULT_PAYMENT_INSTRUCTIONS = {
   headline: 'Send your payment to confirm this reservation',
   accounts: [
-    { method: '[Payment method 1]', accountName: 'The Ledge', accountNumber: '', qrImageUrl: '' },
-    { method: '[Payment method 2]', accountName: 'The Ledge', accountNumber: '', qrImageUrl: '' },
-    { method: '[Bank transfer]', accountName: 'The Ledge', accountNumber: '', qrImageUrl: '' },
+    { method: 'GCash', accountName: 'The Ledge Hotel', accountNumber: '0917 000 0000', qrImageUrl: '' },
+    { method: 'Maya', accountName: 'The Ledge Hotel', accountNumber: '0917 000 0000', qrImageUrl: '' },
+    { method: 'Bank Transfer (BPI)', accountName: 'The Ledge Hotel Inc.', accountNumber: '0000 0000 0000', qrImageUrl: '' },
   ],
   proofEmail: 'payments@theledge.example',
   note: 'Pay the full amount shown on your ticket using any option above, then email a clear screenshot or photo of your payment receipt (with your reference code) to the address above. Your reservation is confirmed once we verify your payment, usually within 24 hours. Unverified reservations may be released after 48 hours.',
@@ -376,18 +377,18 @@ async function startServer() {
       if (existingTypes.length === 0) {
         console.log('No room types found in database. Seeding room types...');
         await db.insert(roomTypes).values([
-          { id: 1, slug: 'unit-premium',  name: 'Premium Unit',  baseRate: '0.00', capacity: 2 },
-          { id: 2, slug: 'unit-standard', name: 'Standard Unit', baseRate: '0.00', capacity: 4 },
-          { id: 3, slug: 'unit-basic',    name: 'Basic Unit',    baseRate: '0.00', capacity: 2 }
+          { id: 1, slug: 'unit-premium',  name: 'The Ledge Suite', baseRate: '8500.00', capacity: 2 },
+          { id: 2, slug: 'unit-standard', name: 'Deluxe King',     baseRate: '5200.00', capacity: 3 },
+          { id: 3, slug: 'unit-basic',    name: 'Studio Queen',    baseRate: '3400.00', capacity: 2 }
         ]);
         
         console.log('Seeding physical units (rooms)...');
-        // One unit per type so the site boots with a valid catalog. Set the real
-        // counts in the Admin Panel, or edit src/db/seed-catalog.ts before first run.
+        // Demo inventory so the availability calendar has something to show.
+        // Adjust counts in the Admin Panel, or edit src/db/seed-catalog.ts.
         const unitSeed = [
-          { prefix: 'PU', roomTypeId: 1, count: 1 },
-          { prefix: 'SU', roomTypeId: 2, count: 1 },
-          { prefix: 'BU', roomTypeId: 3, count: 1 },
+          { prefix: 'LS', roomTypeId: 1, count: 6 },
+          { prefix: 'DK', roomTypeId: 2, count: 12 },
+          { prefix: 'SQ', roomTypeId: 3, count: 18 },
         ];
         const roomsToInsert: any[] = [];
         for (const u of unitSeed) {

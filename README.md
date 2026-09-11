@@ -3,8 +3,9 @@
 Booking and content-managed site: React + Vite front end, Express + Drizzle/Postgres back end,
 served as a single Node process in production.
 
-This repo started from a reusable template. All placeholder copy is marked in `[BRACKETS]` —
-search for `[` to find everything that still needs your words.
+The site ships populated with **demo content** for a modern hotel — rooms, rates, services,
+FAQs, and photography — so it looks finished out of the box. All of it is meant to be
+replaced with the real thing (see "What to replace" below).
 
 ## Requirements
 
@@ -46,10 +47,29 @@ payment details.
 | `npm run lint` | Typecheck with `tsc --noEmit` |
 | `npm run db:push` | Push the Drizzle schema to the database |
 
-## What to customize
+## What to replace
 
-Beyond the `[BRACKETED]` copy, these are deliberate template defaults you may want to change:
+The demo content is plausible but invented. Before this goes anywhere public:
 
+- **Contact details** — the phone number, address (Ridgeview Drive, Antipolo) and
+  coordinates in `src/lib/cmsState.ts` and the footer in `src/App.tsx` are made up.
+- **Payment accounts** — the GCash / Maya / bank numbers in `DEFAULT_PAYMENT_INSTRUCTIONS`
+  (`server.ts`) are `0000` placeholders. Real bookings will not get paid until these are set.
+- **The guest testimonial** in `DEFAULT_ABOUT` is invented. Do not ship a fake review.
+- **Photography** — every image is a hosted Unsplash URL, listed in
+  `HIGH_QUALITY_PRESET_IMAGES` (`src/lib/cmsState.ts`). Fine for a demo; swap in your own
+  photos for production rather than hotlinking a third party.
+- **Rates and inventory** — ₱8,500 / ₱5,200 / ₱3,400 and the 6 / 12 / 18 room counts are
+  set in three places that must agree: `src/lib/cmsState.ts`, `src/data.ts`, and
+  `src/db/seed-catalog.ts` (plus the startup fallback in `server.ts`).
+
+## Design notes
+
+- **Palette** — the brand surface is a light grey. Every colour funnels through `--vp-*`
+  variables at the top of `src/index.css`, so re-skinning the whole site means editing that
+  one block. Light is the default theme; dark is a neutral charcoal, not a tinted one.
+  The Tailwind token names (`pine-*`, `gold-*`, `cream-*`) are historical — they are just
+  names for "surface", "accent", and "type", so change the values, not the classNames.
 - **Currency** — amounts are formatted as PHP / `₱` (`peso()` in `server.ts`, and `₱` literals
   in the components). Change these if you bill in another currency.
 - **Unit tiers** — the three slugs above are load-bearing: they are referenced by the booking
@@ -57,9 +77,9 @@ Beyond the `[BRACKETED]` copy, these are deliberate template defaults you may wa
   (`src/db/seed-catalog.ts`), and the server fallback seed. Rename them in all four places or
   not at all.
 - **Reference prefix** — reservation codes are `TL-XXXXXX`, set in `server.ts`.
-- **Palette** — Tailwind tokens are named `pine-*`, `cream-*`, `gold-*`, `ink-*` in
-  `src/index.css`. Names are cosmetic; change the values to rebrand.
-- **Storage keys** — browser keys are prefixed `tl_` / `ledge_`.
+- **Storage keys** — browser keys are prefixed `tl_` / `ledge_`. Site content lives in
+  `localStorage` under `ledge_cms_data`; a first visit seeds it from the defaults, and
+  "Reset to blank" in the Admin Panel clears it.
 
 ## Deployment
 

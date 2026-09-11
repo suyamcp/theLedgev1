@@ -517,7 +517,7 @@ export default function BookingSystem({
           id="btn_tab_book"
         >
           <span className="flex items-center justify-center gap-2">
-            <CalendarIcon className="w-4 h-4" /> Secure A Spot
+            <CalendarIcon className="w-4 h-4" /> Book a Room
           </span>
           {activeSubTab === 'book' && (
             <motion.div layoutId="activeTabUnderline" className="absolute bottom-0 left-0 right-0 h-0.5 bg-gold-400" />
@@ -578,7 +578,7 @@ export default function BookingSystem({
                 {/* 1. Accommodations list Picker (Left Column) */}
                 <div className="lg:col-span-4 space-y-4" id="cabin_picker_list">
                   <h3 className="font-display font-semibold text-lg text-cream-50 flex items-center gap-2">
-                    <span>1. Choose Your Unit</span>
+                    <span>1. Choose Your Room</span>
                   </h3>
                   <div className="grid grid-cols-1 gap-3">
                     {accommodations.map((acc) => {
@@ -619,7 +619,7 @@ export default function BookingSystem({
                                 ₱{acc.price.toLocaleString()} <span className="font-light text-[10px] text-neutral-400">/ night</span>
                               </span>
                               <span className="text-[10px] flex items-center gap-1 text-neutral-400">
-                                <Users className="w-3 h-3 text-gold-500/80" /> Max {acc.capacity} pax
+                                <Users className="w-3 h-3 text-gold-500/80" /> Sleeps {acc.capacity}
                               </span>
                             </div>
                           </div>
@@ -824,7 +824,7 @@ export default function BookingSystem({
                     <h3 className="font-display font-semibold text-lg text-cream-50 flex items-center gap-2">
                       <Sparkles className="w-5 h-5 text-gold-400" /> Choose Highland Extras
                     </h3>
-                    <p className="text-xs text-neutral-400 mt-1">[Add-ons section intro — describe the optional extras you offer.]</p>
+                    <p className="text-xs text-neutral-400 mt-1">Optional extras you can add now and pay for with the room.</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1068,24 +1068,24 @@ export default function BookingSystem({
                 className="max-w-2xl mx-auto py-4"
                 id="booking_step_3_ticket"
               >
-                <div className="bg-paper-100 rounded-3xl overflow-hidden shadow-2xl border-4 border-[#c9a054]/30 text-ink relative">
+                <div className="bg-paper-100 rounded-3xl overflow-hidden shadow-2xl border-4 border-[#a98d5f]/30 text-ink relative">
                   <div className="absolute top-1/2 -left-3 w-6 h-6 rounded-full bg-ink -translate-y-1/2" />
                   <div className="absolute top-1/2 -right-3 w-6 h-6 rounded-full bg-ink -translate-y-1/2" />
 
                   {/* Header */}
-                  <div className="bg-ink text-paper-50 p-6 flex justify-between items-center border-b border-[#c9a054]/20">
+                  <div className="bg-ink text-paper-50 p-6 flex justify-between items-center border-b border-[#a98d5f]/20">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full border border-[#e0bb73] flex items-center justify-center bg-ink shrink-0">
-                        <span className="font-display font-bold text-xs text-[#e0bb73]">VP</span>
+                      <div className="w-10 h-10 rounded-full border border-[#d0b688] flex items-center justify-center bg-ink shrink-0">
+                        <span className="font-display font-bold text-xs text-[#d0b688]">TL</span>
                       </div>
                       <div>
-                        <h4 className="font-display font-extrabold text-sm tracking-wide text-[#e0bb73]">THE LEDGE</h4>
-                        <span className="text-[10px] text-ink-500 flex items-center gap-0.5 uppercase tracking-widest font-bold font-display"><MapPin className="w-3 h-3 text-[#8a6520]" /> [Location]</span>
+                        <h4 className="font-display font-extrabold text-sm tracking-wide text-[#d0b688]">THE LEDGE</h4>
+                        <span className="text-[10px] text-ink-500 flex items-center gap-0.5 uppercase tracking-widest font-bold font-display"><MapPin className="w-3 h-3 text-[#8a7145]" /> Antipolo, Rizal</span>
                       </div>
                     </div>
                     <div className="text-right">
                       <span className="text-[9px] uppercase font-bold text-ink-500 block font-display">Reference Code</span>
-                      <span className="font-display font-bold text-base text-[#e0bb73]">{newBookingResult.reference}</span>
+                      <span className="font-display font-bold text-base text-[#d0b688]">{newBookingResult.reference}</span>
                     </div>
                   </div>
 
@@ -1141,7 +1141,7 @@ export default function BookingSystem({
                         </div>
                         <div>
                           <span className="text-[9px] uppercase font-bold text-ink-500 block font-display">Guests / Nights</span>
-                          <span className="font-semibold text-ink">{newBookingResult.guestsCount} pax · {newBookingResult.nights} night/s</span>
+                          <span className="font-semibold text-ink">{newBookingResult.guestsCount} guest/s · {newBookingResult.nights} night/s</span>
                         </div>
                       </div>
                     </div>

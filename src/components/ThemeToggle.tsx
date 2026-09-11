@@ -9,7 +9,7 @@ export const getStoredTheme = (): Theme => {
     const t = localStorage.getItem(THEME_KEY);
     if (t === 'light' || t === 'dark') return t;
   } catch { /* noop */ }
-  return 'dark'; // the site's signature look is the default
+  return 'light'; // light grey is the brand surface, so it is the default
 };
 
 export const applyTheme = (t: Theme) => {

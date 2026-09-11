@@ -1043,7 +1043,7 @@ This erases the booking, its payment record and its room hold from the database.
                         <div className="grid grid-cols-2 gap-3">
                           <div className="space-y-1.5">
                             <label className="text-[10px] font-bold text-cream-100 uppercase tracking-widest font-display block">
-                              Max Capacity (Pax)
+                              Max Capacity (guests)
                             </label>
                             <input 
                               type="number"
