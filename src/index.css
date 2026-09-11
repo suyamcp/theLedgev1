@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* ==========================================================================
+   THEMING
+   Every brand colour is declared with `@theme inline` pointing at a --vp-*
+   variable. "inline" makes Tailwind substitute the var() reference straight
+   into each utility -- including opacity variants such as `bg-pine-950/40`,
+   which would otherwise bake in a literal hex and refuse to change theme.
+   Swapping the --vp-* values under [data-theme="light"] therefore re-skins
+   the entire site without touching a single className.
+   ========================================================================== */
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-display: "Space Grotesk", sans-serif;
+
+  /* Always-light surfaces: the printed reservation ticket and the logo badges.
+     A paper voucher should look like paper in either theme, so these never flip. */
+  --color-paper-50: #fcfcf9;
+  --color-paper-100: #faf9f2;
+  --color-paper-200: #f1efe6;
+  --color-ink: #0a1710;
+  --color-ink-700: #33413a;
+  --color-ink-500: #5f6b64;
+}
+
+@theme inline {
+  --color-pine-950: var(--vp-pine-950);
+  --color-pine-900: var(--vp-pine-900);
+  --color-pine-850: var(--vp-pine-850);
+  --color-pine-800: var(--vp-pine-800);
+  --color-pine-750: var(--vp-pine-750);
+  --color-pine-700: var(--vp-pine-700);
+  --color-pine-600: var(--vp-pine-600);
+  --color-pine-500: var(--vp-pine-500);
+  --color-pine-400: var(--vp-pine-400);
+  --color-pine-300: var(--vp-pine-300);
+  --color-pine-200: var(--vp-pine-200);
+  --color-pine-100: var(--vp-pine-100);
+
+  --color-gold-600: var(--vp-gold-600);
+  --color-gold-500: var(--vp-gold-500);
+  --color-gold-400: var(--vp-gold-400);
+  --color-gold-300: var(--vp-gold-300);
+  --color-gold-200: var(--vp-gold-200);
+
+  --color-cream-50: var(--vp-cream-50);
+  --color-cream-100: var(--vp-cream-100);
+  --color-cream-200: var(--vp-cream-200);
+  --color-cream-300: var(--vp-cream-300);
+  --color-cream-400: var(--vp-cream-400);
+
+  --color-neutral-100: var(--vp-neutral-100);
+  --color-neutral-200: var(--vp-neutral-200);
+  --color-neutral-300: var(--vp-neutral-300);
+  --color-neutral-400: var(--vp-neutral-400);
+  --color-neutral-500: var(--vp-neutral-500);
+  --color-neutral-600: var(--vp-neutral-600);
+  --color-neutral-700: var(--vp-neutral-700);
+  --color-neutral-800: var(--vp-neutral-800);
+  --color-neutral-850: var(--vp-neutral-850);
+  --color-neutral-900: var(--vp-neutral-900);
+}
+
+/* ---------- DARK (default) ---------- */
+:root {
+  color-scheme: dark;
+
+  --vp-pine-950: #020f07;   /* page background */
+  --vp-pine-900: #051a0e;   /* cards / panels  */
+  --vp-pine-850: #082414;   /* raised / borders */
+  --vp-pine-800: #062c15;   /* borders */
+  --vp-pine-750: #0a3a1d;
+  --vp-pine-700: #0e4424;
+  --vp-pine-600: #165b32;
+  --vp-pine-500: #1e7a44;
+  --vp-pine-400: #29a35c;
+  --vp-pine-300: #49c47e;
+  --vp-pine-200: #88e0ae;
+  --vp-pine-100: #c3f3d7;
+
+  --vp-gold-600: #a87e2a;
+  --vp-gold-500: #c9a054;
+  --vp-gold-400: #e0bb73;
+  --vp-gold-300: #ebd29b;
+  --vp-gold-200: #f5e7c4;
+
+  --vp-cream-50: #fcfcf9;   /* body text */
+  --vp-cream-100: #faf9f2;  /* headings */
+  --vp-cream-200: #f4f2e3;
+  --vp-cream-300: #ebe8cd;
+  --vp-cream-400: #ded9b1;
+
+  --vp-neutral-100: #f5f5f5;
+  --vp-neutral-200: #e5e5e5;
+  --vp-neutral-300: #d4d4d4;
+  --vp-neutral-400: #a3a3a3;  /* muted body copy */
+  --vp-neutral-500: #737373;
+  --vp-neutral-600: #525252;
+  --vp-neutral-700: #404040;
+  --vp-neutral-800: #262626;
+  --vp-neutral-850: #1c1c1c;
+  --vp-neutral-900: #171717;
+}
+
+/* ---------- LIGHT ----------
+   Not a mechanical inversion. The page is pure white; type is a deep forest
+   near-black (warmer and more expensive-looking than pure #000); secondary
+   copy steps down through warm greens rather than flat grey. Brand gold is
+   KEPT at full strength for button fills and borders, while the lighter golds
+   -- which exist to be readable text on dark -- become deep bronze so they
+   stay legible on white.
+   ------------------------------------------------------------------------ */
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Surfaces: only the page is pure white. Panels carry the faintest warm
+     tint and borders stay clearly drawn so nothing dissolves. */
+  --vp-pine-950: #ffffff;   /* page */
+  --vp-pine-900: #f7faf6;   /* cards / panels */
+  --vp-pine-850: #ccd5c5;   /* card edges */
+  --vp-pine-800: #b8c4af;   /* main borders */
+  --vp-pine-750: #a6b39d;
+  --vp-pine-700: #94a38b;
+
+  /* Saturated greens stay green, deepened to read on white. */
+  --vp-pine-600: #1c6b3b;
+  --vp-pine-500: #1a7040;
+  --vp-pine-400: #1c8049;
+  --vp-pine-300: #228f57;
+  --vp-pine-200: #7fce9f;
+  --vp-pine-100: #d6f0e0;
+
+  /* Gold: 500 is the brand fill (buttons, borders) and must stay bright.
+     400/300/200 are text-on-dark tokens, so they invert to deep bronze. */
+  --vp-gold-600: #6b4e14;
+  --vp-gold-500: #c9a054;
+  --vp-gold-400: #7d5a15;
+  --vp-gold-300: #6b4d10;
+  --vp-gold-200: #5a4009;
+
+  /* Type: deep forest black for headings, stepping down to soft green-grey. */
+  --vp-cream-100: #0c1d14;  /* headings */
+  --vp-cream-50:  #1e2f27;  /* body */
+  --vp-cream-200: #35463d;
+  --vp-cream-300: #4b5c53;
+  --vp-cream-400: #61726a;
+
+  /* Secondary copy. 400 is the workhorse muted tone (~6.4:1 on white). */
+  --vp-neutral-100: #0a1610;
+  --vp-neutral-200: #18261f;
+  --vp-neutral-300: #2c3d34;
+  --vp-neutral-400: #54655c;
+  --vp-neutral-500: #68786e;
+  --vp-neutral-600: #7e8d84;
+  --vp-neutral-700: #c4cec0;
+  --vp-neutral-800: #a3b09c;
+  --vp-neutral-850: #97a690;
+  --vp-neutral-900: #7d8c84;
+}
+
+body { background-color: var(--vp-pine-950); }
+
+/* Custom scrollbars inside the application */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--vp-pine-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--vp-gold-500);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-gold-400);
+}
+
+/* Dark-mode shadows are heavy black glows; on white they read as smudges.
+   Light mode gets soft, layered, slightly green-tinted elevation instead. */
+[data-theme="light"] .shadow-2xl {
+  box-shadow: 0 1px 2px rgba(20, 42, 30, 0.04), 0 12px 32px -8px rgba(20, 42, 30, 0.12);
+}
+[data-theme="light"] .shadow-xl {
+  box-shadow: 0 1px 2px rgba(20, 42, 30, 0.04), 0 8px 22px -6px rgba(20, 42, 30, 0.10);
+}
+[data-theme="light"] .shadow-lg {
+  box-shadow: 0 1px 2px rgba(20, 42, 30, 0.04), 0 5px 14px -4px rgba(20, 42, 30, 0.08);
+}
+[data-theme="light"] .shadow-md { box-shadow: 0 2px 8px -2px rgba(20, 42, 30, 0.08); }
+[data-theme="light"] .shadow-inner { box-shadow: inset 0 1px 3px rgba(20, 42, 30, 0.05); }
+
+/* Text selection should feel branded, not the browser default blue. */
+[data-theme="light"] ::selection { background: #f0e2c2; color: #0c1d14; }
+
+/* Ease the flip between themes rather than snapping. */
+html { transition: background-color 220ms ease; }
+body { transition: background-color 220ms ease, color 220ms ease; }
+
+
+/* Accent text that is near-white by design (calendar day numbers, status chips)
+   would vanish on a white page, so darken those specific Tailwind tokens. */
+[data-theme="light"] {
+  --color-emerald-50:  #0f4c34;
+  --color-emerald-100: #115939;
+  --color-emerald-200: #136844;
+  --color-emerald-300: #15784d;
+  --color-amber-50:    #79500d;
+  --color-amber-200:   #855a10;
+  --color-amber-300:   #8d6212;
+  --color-rose-300:    #9c1439;
+  --color-red-300:     #9e2020;
+  --color-sky-50:      #0d5170;
+}
+
+/* The dark-mode "fog" that fades photos into the page reads as haze on white. */
+[data-theme="light"] .img-fade { display: none; }
+
+/* Glow effects and animation classes */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(201, 160, 84, 0.4), 0 0 10px rgba(201, 160, 84, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(201, 160, 84, 0.8), 0 0 25px rgba(201, 160, 84, 0.4);
+  }
+}
+
+.neon-btn-glow {
+  animation: pulse-glow 3s infinite;
+}
