@@ -266,7 +266,15 @@ export const DEFAULT_FAQS: FAQ[] = [
 ];
 
 const LOCAL_STORAGE_KEY = 'ledge_cms_data';
-const INITIALIZED_KEY = 'ledge_cms_initialized';
+const VERSION_KEY = 'ledge_cms_version';
+const LEGACY_INITIALIZED_KEY = 'ledge_cms_initialized';
+
+// Bump this whenever the DEFAULT_* content above changes in a way existing
+// visitors must pick up. Seeding used to be one-shot behind an "initialized"
+// flag, so a browser that had loaded an earlier build kept its cached copy
+// forever — including the empty one, which reported every date as sold out
+// because the availability engine reads `quantity` straight off this data.
+const CMS_VERSION = 2;
 
 const defaults = (): CMSData => ({
   hero: DEFAULT_HERO,
@@ -276,18 +284,28 @@ const defaults = (): CMSData => ({
   faqs: DEFAULT_FAQS
 });
 
-// Load CMS data. A first-time visitor gets the populated default site rather
-// than an empty shell; "Reset to blank" in the Admin Panel clears it on demand.
+function seed(): CMSData {
+  const initial = defaults();
+  saveCMSData(initial);
+  try {
+    localStorage.setItem(VERSION_KEY, String(CMS_VERSION));
+    localStorage.removeItem(LEGACY_INITIALIZED_KEY);
+  } catch { /* storage blocked; carry on with in-memory defaults */ }
+  return initial;
+}
+
+// Load CMS data. A visitor whose cached copy predates CMS_VERSION is re-seeded
+// with the populated defaults; "Reset to blank" in the Admin Panel still clears
+// it on demand, and stays cleared until the version changes again.
 export function getCMSData(): CMSData {
   if (typeof window === 'undefined') return defaults();
 
-  const isInitialized = localStorage.getItem(INITIALIZED_KEY);
-  if (!isInitialized) {
-    const initial = defaults();
-    saveCMSData(initial);
-    localStorage.setItem(INITIALIZED_KEY, 'true');
-    return initial;
-  }
+  let storedVersion: string | null = null;
+  try {
+    storedVersion = localStorage.getItem(VERSION_KEY);
+  } catch { /* private mode / blocked storage */ }
+
+  if (storedVersion !== String(CMS_VERSION)) return seed();
 
   try {
     const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
